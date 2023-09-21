@@ -67,24 +67,31 @@ export const Product = styled.div`
           }
 `;
 
-const CardProduct = () => {
-    return (
-        <Product>
-            <div className="imagemProduto">
-                <img src="" alt="Imagem Produto" />
-            </div>
-            <div className="content">
-                <h3>Titulo do produto lorem lorem lorem lorem lorem</h3>
-                <p>Description</p>
-                <span>$ 200.00</span>
-            </div>
+const CardProduct = (props) => {
 
-            <div className="Delete">
-                <img src={imgLixeira} />
-            </div>
+  const excluirItem = () => {
+    const novoValor = props.cart.filter(item => item.titulo !== props.titulo);
+    props.setCart(novoValor);
+  }
 
-        </Product>
-    );
+
+  return (
+    <Product>
+      <div className="imagemProduto">
+        <img src={props.image} alt="Imagem Produto" />
+      </div>
+      <div className="content">
+        <h3>{props.titulo}</h3>
+        <p>{props.description}</p>
+        <span>{props.price}</span>
+      </div>
+
+      <div className="Delete" onClick={excluirItem}>
+        <img src={imgLixeira} />
+      </div>
+
+    </Product>
+  );
 };
 
 export default CardProduct;

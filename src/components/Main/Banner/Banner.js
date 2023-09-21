@@ -59,7 +59,7 @@ export const BannerContainer = styled.section`
                 width: 100%;
                 gap: 10px;
                 text-align: center;
-
+                gap: 30px;
                 h2{
                 font-size: 1.8rem;
                 text-align: center;
@@ -88,7 +88,7 @@ export const BannerContainer = styled.section`
             width: 100%;
             gap: 10px;
             text-align: center;
-
+            gap: 30px;
                 h2{
                 font-size: 1.8rem;
                 text-align: center;
@@ -107,6 +107,37 @@ export const BannerContainer = styled.section`
 
         .imageBanner{
             width: 100%;
+        }
+        }
+
+        @media only screen and (min-width: 768px) and (max-width: 1024px){
+            height: calc(100vh - 15vh);
+
+            .contentBanner{
+                height: 100%;
+                padding-top: 50px;
+                overflow-y: scroll;
+                gap: 30px;
+                h2{
+                    font-size: 1.8rem;
+                }
+            }
+        }
+
+        @media only screen and (min-width: 1025px){
+        height: calc(100vh - 15vh);        
+        .contentBanner{
+            height: 100%;
+            padding-top: 50px;
+            overflow-y: auto;
+            padding: 0 30px;
+            gap: 30px;
+                h2{
+                    font-size: 1.8rem;
+                }
+        }
+        .imageBanner{
+            height: 100%;
         }
     }
 `

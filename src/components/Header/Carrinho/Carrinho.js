@@ -8,7 +8,7 @@ export const Car = styled.div`
     width: 40px;
     height: 40px;
     cursor: pointer;
-
+    position: relative;
         img{
             width: 100%;
             height: 100%;
@@ -18,6 +18,19 @@ export const Car = styled.div`
             transform: scale(.97);
         }
 
+        span{
+          position: absolute;
+          width: 20px;
+          height: 20px;
+          background-color: black;
+          left: -10px;
+          top: -5px;
+          border-radius: 50%;
+          color: white;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
 `;
 
 export const ContainerCarrinho = styled.div`
@@ -146,35 +159,37 @@ export const ContainerCarrinho = styled.div`
         }
 `;
 
-const Carrinho = () => {
+const Carrinho = ({ cart, setCart }) => {
     const [abreCarro, setAbreCarro] = useState(false)
 
     const abreCarrinho = () => {
         setAbreCarro(!abreCarro)
     }
 
+    const lista = cart.map((item) =>
+        <li key={item.id}>
+            <CardProduct
+                titulo={item.titulo}
+                image={item.image}
+                description={item.descricao}
+                price={item.preco}
+                setCart={setCart}
+                cart={cart}
+            />
+        </li>
+    )
+
     return (
 
         <>
             <Car onClick={abreCarrinho}>
                 <img src={ImgCarro} alt="IMG Carro" />
+                {cart.length > 0 ? <span>{cart.length}</span> : ""}
             </Car>
 
             <ContainerCarrinho className={abreCarro && "active"}>
                 <ul>
-                    <li>
-                        <CardProduct />
-                    </li>
-
-                    <li>
-                        <CardProduct />
-                    </li>
-                    <li>
-                        <CardProduct />
-                    </li>
-                    <li>
-                        <CardProduct />
-                    </li>
+                    {lista}
                 </ul>
                 <button>Prosseguir para compra!</button>
             </ContainerCarrinho>

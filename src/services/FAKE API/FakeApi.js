@@ -52,7 +52,7 @@ export const FakeApi = [
             cinza: "Gray"
         },
         marca: "",
-        categoria: "",
+        categoria: "Impulsive",
         promocao: false
     },
     {
